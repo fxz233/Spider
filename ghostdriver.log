@@ -1,0 +1,35 @@
+[INFO  - 2021-03-15T11:33:23.316Z] GhostDriver - Main - running on port 1668
+[INFO  - 2021-03-15T11:33:27.559Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2021-03-15T11:33:27.559Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.customHeaders:  - {}
+[INFO  - 2021-03-15T11:33:27.559Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2021-03-15T11:33:27.559Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 42a90d30-8582-11eb-a102-1327a74f82e8
+[ERROR - 2021-03-15T11:33:31.168Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.onError - msg: ReferenceError: Can't find variable: Set
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-03-15T11:33:31.168Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.onError - stack:
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-03-15T11:33:31.194Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.onError - msg: ReferenceError: Can't find variable: Set
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-03-15T11:33:31.194Z] Session [42a90d30-8582-11eb-a102-1327a74f82e8] - page.onError - stack:
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  e (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+  (anonymous function) (http://bilibili.com-l-163.com/hls.min.js:1)
+
+  phantomjs://platform/console++.js:263 in error

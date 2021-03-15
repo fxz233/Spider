@@ -9,45 +9,42 @@ import threading
 import requests
 import time
 class DownloadThread(threading.Thread):
-    def __init__(self,num,urls_queue,buffer_dict,signal):
+    def __init__(self,num,urls_queue,buffer_dict,signal,retry):
         super().__init__(daemon=True)
         self.num=num
         self.urls_queue=urls_queue
         self.buffer_dict=buffer_dict
         self.signal=signal
-       
+        self.retry=retry
     def run(self):
-        print('thread '+str(self.num)+' start')
+        # print('thread '+str(self.num)+' start')
         while self.signal:
-            try:
+            if not self.urls_queue.empty():
                 ts_list=self.urls_queue.get()
                 seq=ts_list[0]#获取序列号
-                print(seq,'已取')
-                retry=0
-                while retry<3:
-                    try:
-                        r4=requests.get(ts_list[1],timeout=10)#发起请求
-                        # print('thread '+str(self.num)+' :'+str(r4.status_code))
-                        self.buffer_dict[seq]=r4.content
-                        break
-                    except Exception as unknownerr:
-                        print('状态码:',r4.status_code,'Exception:',unknownerr)
-                        time.sleep(4)
-                        print('重新尝试')
-                        retry+=1
-                        continue
-                    if retry==3:
-                        self.urls_queue.put(ts_list)#尝试次数超过3次,放回未下载地址,退出
-                        break#直接退出
-            except Exception as queue_err:
-                print('队列已空,Exception:',queue_err)
+                # print(seq,'已取')
+                try:
+                    # print(ts_list[1])
+                    rr=requests.get(ts_list[1],timeout=20)#发起请求
+                    # print(ts_list[1])
+                    # print('thread '+str(self.num)+' :'+str(r4.status_code))
+                    self.buffer_dict[seq]=rr.content
+                except Exception as unknownerr:
+                    print('Exception:',unknownerr)
+                    self.urls_queue.put((seq,ts_list[1]))
+                    print('push:',seq)
+                    time.sleep(4)
+                    # print('重新尝试')
+                    self.retry[0]=self.retry[0]+1
+                    continue
+            else:
+                self.retry[0]=-1
                 break
-        print('thread '+str(self.num)+' end')
-        
+        # print('thread '+str(self.num)+' end')
 #create thread pool
-def create_thread(thread_num,thread_max,threads,urls_queue,buffer_dict,signal):
+def create_thread(thread_num,thread_max,threads,urls_queue,buffer_dict,signal,retry):
      while thread_num<thread_max:
-        t=DownloadThread(thread_num,urls_queue,buffer_dict,signal)
+        t=DownloadThread(thread_num,urls_queue,buffer_dict,signal,retry)
         threads.append(t)
         thread_num+=1
 def activate_thread(threads):
